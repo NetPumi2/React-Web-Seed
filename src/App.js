@@ -1,9 +1,17 @@
+// @flow
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  testFlow = (text: string) => {
+    console.log("test flow", text);
+  };
+
   render() {
+    this.testFlow("xxxx");
+
     return (
       <div className="App">
         <div className="App-header">

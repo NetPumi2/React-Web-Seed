@@ -1,0 +1,9 @@
+/coverage/*
+/flow-coverage/*
+/flow-typed/*
+/utils/*
+/web/node_modules/
+/node_modules/
+/packages/*
+/gulpfile.js
+/src/reducers/authentication.js
