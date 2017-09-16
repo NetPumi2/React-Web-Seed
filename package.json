@@ -5,6 +5,7 @@
   "dependencies": {
     "child_process": "^1.0.2",
     "clear": "^0.0.1",
+    "crawler": "^1.0.5",
     "eslint": "^4.6.1",
     "eslint-config-airbnb": "^15.1.0",
     "gulp-bump": "^2.7.0",
@@ -12,12 +13,16 @@
     "gulp-eslint": "^4.0.0",
     "gulp-help": "^1.6.1",
     "gulp-watchman": "^2.0.2",
+    "jest": "^21.1.0",
+    "jest-junit-reporter": "^1.1.0",
     "lodash": "^4.17.4",
     "path": "^0.12.7",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.13",
-    "stream": "^0.0.2"
+    "stream": "^0.0.2",
+    "unexpected": "^10.35.0",
+    "unexpected-set": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -29,10 +34,39 @@
     "flow:watch": "gulp flow:watch --silent",
     "eslint": "gulp eslint",
     "eslint:watch": "gulp eslint:watch --silent",
-    "jest": "jest",
+    "jest": "jest --no-watchman",
     "jest:coverage": "jest --coverage",
     "jest:coverage:watch": "jest --coverage --watchAll --watchman",
     "jest:watch": "jest --watch --watchman"
+  },
+  "jest": {
+    "automock": false,
+    "testResultsProcessor": "./node_modules/jest-junit-reporter",
+    "roots": [
+      "<rootDir>/src",
+      "<rootDir>/../common"
+    ],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web"
+    },
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/react-scripts/config/jest/babelTransform.js",
+      "^.+\\.css$": "<rootDir>/node_modules/react-scripts/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/node_modules/react-scripts/config/jest/fileTransform.js"
+    },
+    "setupFiles": [
+      "<rootDir>/node_modules/react-scripts/config/polyfills.js"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "html"
+    ],
+    "collectCoverageFrom": [
+      "<rootDir>/src/components/**/*.js",
+      "<rootDir>/src/lib/**/*.js"
+    ]
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -157,22 +157,6 @@ gulp.task('eslint:watch', ['eslint:nofail'], () => {
 
 // ~ eslint ~ //
 
-// - common - //
-
-const PATH_TO_COMMON = ['../common/**/*', '../common/**/.*'];
-const PATH_TO_NODE_MODULES = './node_modules/hemoned-common';
-
-gulp.task('common:copy', () => {
-  gulp.src(PATH_TO_COMMON)
-    .pipe(gulp.dest(PATH_TO_NODE_MODULES));
-});
-
-gulp.task('common:watch', ['common:copy'], () => {
-  gulp.watch(PATH_TO_COMMON, ['common:copy']);
-});
-
-// ~ common ~ //
-
 // - react-scripts - //
 
 const PATH_TO_REACT_SCRIPTS = ['./packages/react-scripts/**/*', './packages/react-scripts/**/.*'];
