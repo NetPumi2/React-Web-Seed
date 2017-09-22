@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite id="0" name="/Users/salek/Documents/person/web-route/src/redux/reducers/header/__tests__/actions.test.js" errors="0" package="/Users/salek/Documents/person/web-route/src/redux/reducers/header/__tests__/actions.test.js" hostname="localhost" tests="2" failures="0" time="0.672" timestamp="2017-09-22T11:34:55">
+  <testsuite id="0" name="/Users/salek/Documents/person/web-route/src/redux/reducers/header/__tests__/actions.test.js" errors="0" package="/Users/salek/Documents/person/web-route/src/redux/reducers/header/__tests__/actions.test.js" hostname="localhost" tests="2" failures="0" time="0.467" timestamp="2017-09-22T13:21:58">
     <properties>
     </properties>
     <testcase classname="User Actions" name="headerUp() should create HEADER.UP action" time="0">

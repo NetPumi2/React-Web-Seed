@@ -14,6 +14,7 @@ const clear = require('clear');
 const path = require('path');
 const Stream = require('stream');
 const bump = require('gulp-bump');
+const gutil = require("gulp-util");
 
 const PROJECT_ROOT = path.resolve(__dirname);
 
@@ -39,7 +40,7 @@ const DEFAULT_JS_FILES_TO_WATCH = [
   './index.*.js',
   './__tests__/**/*.js',
   './tests/**/*.js',
-  './src/**/*.js',
+  './src/**/**/*.js',
 ];
 
 function spawnAndPipe(command, args, options, cb) {
@@ -74,13 +75,15 @@ gulp.task('clear', () => {
 
 // - flow - //
 
-gulp.task('flow:watch', ['clear', 'flow'], () => {
-  const watchman = require('gulp-watchman');
-  return watchman(
-    PROJECT_ROOT,
-    DEFAULT_WATCHMAN_CONFIG,
-    ['clear', 'flow']
-  );
+gulp.task('flow:watch', () => {
+  clear();
+  gutil.log("================FLOW:WATCH");
+  gulp.start('flow');
+   gulp.watch(DEFAULT_JS_FILES_TO_WATCH).on('change', () => {
+     clear();
+     gutil.log("================FLOW:WATCH");
+     gulp.start('flow');
+   });
 });
 
 gulp.task('flow', (cb) => {
@@ -125,6 +128,17 @@ function createEslintTask({ failAfterError }) {
     .pipe(eslint.failAfterError());
 }
 
+gulp.task('eslint:watch', () => {
+  clear();
+  gutil.log("================ESLINT:WATCH");
+  gulp.start('eslint')
+   gulp.watch(DEFAULT_JS_FILES_TO_WATCH).on('change', () => {
+     clear();
+     gutil.log("================ESLINT:WATCH");
+     gulp.start('eslint')
+   });
+});
+
 gulp.task('eslint', () => {
   return createEslintTask({ failAfterError: true });
 });
@@ -138,22 +152,6 @@ const throttledClearEslint = throttle(() => {
   clear();
   gulp.start('eslint');
 }, 200);
-
-gulp.task('eslint:watch', ['eslint:nofail'], () => {
-  const watchman = require('gulp-watchman');
-  return watchman(
-    PROJECT_ROOT,
-    DEFAULT_WATCHMAN_CONFIG
-  ).pipe(onFileChange((filepath, stat, callback) => {
-    const isDeleted = stat === null;
-    if (isDeleted && cache.caches[ESLINT_CACHE_NAME]) {
-      delete cache.caches[ESLINT_CACHE_NAME][filepath];
-    }
-
-    throttledClearEslint();
-    callback();
-  }));
-});
 
 // ~ eslint ~ //
 

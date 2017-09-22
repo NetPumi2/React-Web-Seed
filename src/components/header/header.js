@@ -20,7 +20,6 @@ class Header extends Component<Props> {
     return (
       <div className="App">
         <div className="App-header">
-
           <div>
             <a href="#" name="whatever" role="button" onClick={headerUp}>Click UP</a><br />
             <a href="#" role="button" onClick={headerDown}>Click DOWN</a><br />
