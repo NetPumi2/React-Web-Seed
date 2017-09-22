@@ -6,4 +6,4 @@
 /node_modules/
 /packages/*
 /gulpfile.js
-/src/reducers/authentication.js
+/src/registerServiceWorker.js

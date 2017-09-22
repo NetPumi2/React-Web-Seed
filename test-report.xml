@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite id="0" name="/Users/salek/Documents/person/web-route/src/App.test.js" errors="0" package="/Users/salek/Documents/person/web-route/src/App.test.js" hostname="localhost" tests="2" failures="0" time="0.857" timestamp="2017-09-16T08:59:27">
+  <testsuite id="0" name="/Users/salek/Documents/person/web-route/src/redux/reducers/header/__tests__/actions.test.js" errors="0" package="/Users/salek/Documents/person/web-route/src/redux/reducers/header/__tests__/actions.test.js" hostname="localhost" tests="2" failures="0" time="0.672" timestamp="2017-09-22T11:34:55">
     <properties>
     </properties>
-    <testcase classname="Render test" name="renders without crashing" time="0">
+    <testcase classname="User Actions" name="headerUp() should create HEADER.UP action" time="0">
     </testcase>
-    <testcase classname="Render test" name="test uexpect" time="0">
+    <testcase classname="User Actions" name="headerDown() should create HEADER.DOWN action" time="0">
     </testcase>
     <system-out/>
     <system-err/>

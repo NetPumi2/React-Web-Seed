@@ -1,27 +1,22 @@
 // @flow
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import createHistory from 'history/createBrowserHistory';
+import { Provider } from 'react-redux';
+import createRouter from './router';
+import configureStore from './redux/configureStore';
 
-class App extends Component {
+const history = createHistory();
+const store = configureStore([], history);
 
-  testFlow = (text: string) => {
-    console.log("test flow", text);
-  };
+type Props = {
+};
 
+class App extends Component<Props> {
   render() {
-    this.testFlow("xxxx");
-
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Provider store={store}>
+        {createRouter(store, history)}
+      </Provider>
     );
   }
 }
